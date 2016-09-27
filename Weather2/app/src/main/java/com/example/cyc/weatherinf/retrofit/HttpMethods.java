@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -32,6 +31,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
+
 /**
  * Created by cyc on 2016/9/7.
  */
@@ -45,6 +45,7 @@ public class HttpMethods {
 
     private Retrofit retrofit;
     private WeatherService service;
+    private OkHttpClient client;
 
     private HttpMethods() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -56,46 +57,47 @@ public class HttpMethods {
             builder.addInterceptor(loggingInterceptor);
         }
 
-        File cacheFile = new File(BaseApplication.getCache(), "HttpAche");
-        Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
-
-        Interceptor interceptor = new Interceptor() {
+        Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request();
 
+                Request request = chain.request();
                 if (!Util.isNetworkConnected(BaseApplication.getmAppContext())) {
                     request = request.newBuilder()
                             .cacheControl(CacheControl.FORCE_CACHE)
                             .build();
                 }
-                Response response = chain.proceed(request);
-
+                Response originalResponse = chain.proceed(request);
                 if (Util.isNetworkConnected(BaseApplication.getmAppContext())) {
-                    int maxAge = 0;
-                    // 有网络时 设置缓存超时时间0个小时
-                    response.newBuilder()
+                    int maxAge = 60;
+                    return originalResponse.newBuilder()
                             .header("Cache-Control", "public, max-age=" + maxAge)
                             .build();
                 } else {
                     int maxStale = 60 * 60 * 24 * 28;
-                    response.newBuilder()
+                    return originalResponse.newBuilder()
                             .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
                             .build();
                 }
-                return response;
             }
         };
-
-        builder.cache(cache).addInterceptor(interceptor);
-
-        builder.connectTimeout(15, TimeUnit.SECONDS);
-        builder.retryOnConnectionFailure(true);
-
+//        OkHttpClient client = new OkHttpClient();
+//        client.networkInterceptors().add(REWRITE_CACHE_CONTROL_INTERCEPTOR);
+        //setup cache
+        File httpCacheDirectory = new File(BaseApplication.getCache(), "responses");
+        int cacheSize = 100 * 1024 * 1024;
+        Cache cache = new Cache(httpCacheDirectory, cacheSize);
+        //add cache to the client
+        builder.cache(cache).addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR);
+/*
+              retrofit2.adapter.rxjava.HttpException: HTTP 504 Unsatisfiable Request (only-if-cached)
+              第一次使用时正常，后来出现这个问题，无法缓存
+ */
         retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(BASE_URL)
+//                .client(builder.build())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         service = retrofit.create(WeatherService.class);
@@ -136,7 +138,6 @@ public class HttpMethods {
                     public void onCompleted() {
 
                     }
-
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
@@ -161,7 +162,7 @@ public class HttpMethods {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
                     }
 
                     @Override
