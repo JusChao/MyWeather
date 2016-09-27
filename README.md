@@ -4,12 +4,11 @@
 和风天气国内城市Id信息：[和风天气城市信息](http://www.heweather.com/documents/cn-city-list)
 #截图
 ![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124428.jpg)
-![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124436.jpg)
 ![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124451.jpg)
-![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124401.jpg)
-![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124412.jpg)
-![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124418.jpg)
-![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124426.jpg)
+![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124501.jpg)
+![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124612.jpg)
+![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124618.jpg)
+![jieping](https://github.com/JusChao/MyWeather/blob/master/image/S60927-124626.jpg)
 
 
 
