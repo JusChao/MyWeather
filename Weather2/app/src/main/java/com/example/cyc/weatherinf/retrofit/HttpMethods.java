@@ -117,7 +117,6 @@ public class HttpMethods {
         service.getCity(URL)
                 .subscribeOn(Schedulers.io())
                 .map(new Func1<City, List<CityBean>>() {
-
                     @Override
                     public List<CityBean> call(City city) {
                         List<CityBean> cityBeans = new ArrayList<CityBean>();
@@ -168,7 +167,7 @@ public class HttpMethods {
 
                     @Override
                     public void onNext(CityWeather cityWeather) {
-                        show.showWeather(cityWeather);
+                        show.sendWeather(cityWeather);
                     }
                 });
 

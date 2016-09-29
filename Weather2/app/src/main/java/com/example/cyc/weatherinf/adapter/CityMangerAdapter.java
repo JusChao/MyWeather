@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -24,6 +25,16 @@ public class CityMangerAdapter extends RecyclerView.Adapter {
     private List<String> list = new ArrayList<>();
     private Set<String> set = new HashSet<>();
 
+    private OnClickListener listener;
+
+    public interface OnClickListener {
+        void onClick(String cityName);
+    }
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.listener = listener;
+    }
+
     public CityMangerAdapter(Context mContext) {
         this.mContext = mContext;
         sharedPreferences = mContext.getSharedPreferences("WeatherData", 0);
@@ -37,10 +48,22 @@ public class CityMangerAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         CityMangerViewHolder viewHolder = (CityMangerViewHolder) holder;
         viewHolder.textView.setText(list.get(position));
         viewHolder.linearLayout.scrollTo(0, 0);
+        viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(list.get(position));
+            }
+        });
+        //#00   默认没有主城市
+        if (sharedPreferences.getString("main_city", "#00").equals(list.get(position))) {
+            viewHolder.mainCityView.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.mainCityView.setVisibility(View.GONE);
+        }
     }
 
     @Override

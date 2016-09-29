@@ -41,6 +41,6 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_white_24dp"
-        app:layout_behavior="com.example.cyc.weatherinf.behavior.ScrollingFabBehavior" />
+        />
 
 </android.support.design.widget.CoordinatorLayout>

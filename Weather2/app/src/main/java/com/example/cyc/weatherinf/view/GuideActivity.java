@@ -11,6 +11,8 @@ import java.util.TimerTask;
 
 /**
  * Created by cyc on 2016/9/24.
+ *
+ * App引导界面
  */
 public class GuideActivity extends Activity {
     @Override

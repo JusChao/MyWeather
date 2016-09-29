@@ -113,6 +113,9 @@ public class WeatherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @BindView(R.id.now_weather_qul)
         TextView weatherQul;
 
+        /*
+        当日天气
+         */
         public NowWeahterViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -297,8 +300,6 @@ public class WeatherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             forecastFourTemp.setText(temps[3]);
             forecastFiveTemp.setText(temps[4]);
             forecastSixTemp.setText(temps[5]);
-
-
 
         }
     }

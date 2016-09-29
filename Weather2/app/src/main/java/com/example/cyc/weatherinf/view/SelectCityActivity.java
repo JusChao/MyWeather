@@ -44,6 +44,7 @@ public class SelectCityActivity extends BaseCompatActivity implements GetCityLis
     private List<CityBean> cityBeanCopy = new ArrayList<>();
     private CityListAdapter adapter;
     private LinearLayoutManager layoutManager;
+    private boolean noCity = false;
 
 
     @Override
@@ -52,7 +53,7 @@ public class SelectCityActivity extends BaseCompatActivity implements GetCityLis
         setContentView(R.layout.select_city);
         unbinder = ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-
+        noCity = getIntent().getBooleanExtra("noCity", false);
         initRecyler();
         searchEditText.setVisibility(View.GONE);
 
@@ -65,8 +66,6 @@ public class SelectCityActivity extends BaseCompatActivity implements GetCityLis
             }
         });
     }
-
-
 
     private void editListener() {
         searchEditText.addTextChangedListener(new TextWatcher() {
@@ -152,8 +151,11 @@ public class SelectCityActivity extends BaseCompatActivity implements GetCityLis
     @Override
     public void onClick(int position) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("cityId", cityBeans.get(position).cityId);
-        intent.putExtra("cityName", cityBeans.get(position).cityChinese);
+        String nameAndId = cityBeans.get(position).cityChinese + "#" + cityBeans.get(position).cityId;
+        intent.putExtra("cityNameId", nameAndId);
+        if (noCity) {
+            getSharedPreferences("WeatherData", 0).edit().putString("main_city", nameAndId).commit();
+        }
         startActivity(intent);
         this.finish();
     }
