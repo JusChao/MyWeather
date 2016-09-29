@@ -52,12 +52,12 @@ public class CityMangerAdapter extends RecyclerView.Adapter {
         CityMangerViewHolder viewHolder = (CityMangerViewHolder) holder;
         viewHolder.textView.setText(list.get(position));
         viewHolder.linearLayout.scrollTo(0, 0);
-        viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onClick(list.get(position));
-            }
-        });
+//        viewHolder.textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                listener.onClick(list.get(position));
+//            }
+//        });
         //#00   默认没有主城市
         if (sharedPreferences.getString("main_city", "#00").equals(list.get(position))) {
             viewHolder.mainCityView.setVisibility(View.VISIBLE);
@@ -79,8 +79,8 @@ public class CityMangerAdapter extends RecyclerView.Adapter {
         if (list.size() < 2) {
             Toast.makeText(mContext, "需要保留一个城市", Toast.LENGTH_SHORT).show();
         }
-
-        set.remove(list.remove(position));
+        String s = list.remove(position);
+        set.remove(s);
         notifyDataSetChanged();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putStringSet("cityNameIdSet", set);

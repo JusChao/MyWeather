@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.GuideActivity"
+        <activity android:name=".activity.GuideActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,15 +20,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.SelectCityActivity"
+        <activity android:name=".activity.SelectCityActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".view.MainActivity"
+        <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name=".view.CityMangerActivity"
+            android:name=".activity.CityMangerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

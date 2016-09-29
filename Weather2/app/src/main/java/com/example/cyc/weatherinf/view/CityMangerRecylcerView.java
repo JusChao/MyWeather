@@ -97,7 +97,7 @@ public class CityMangerRecylcerView extends RecyclerView {
                 yMove = y;
                 int dx = xMove - xDown;
                 int dy = yMove - yDown;
-                if (Math.abs(dy) < mTouchSlop * 5 && Math.abs(dx) > mTouchSlop) {
+                if (Math.abs(dy) < mTouchSlop * 2 && Math.abs(dx) > mTouchSlop) {
                     int scrollX = itemLayout.getScrollX();
                     int newScrollX = mStartX - x;
                     if (newScrollX < 0 && scrollX <= 0) {

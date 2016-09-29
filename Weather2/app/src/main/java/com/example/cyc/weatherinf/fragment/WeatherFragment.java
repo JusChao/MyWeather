@@ -17,8 +17,8 @@ import com.example.cyc.weatherinf.adapter.WeatherAdapter;
 import com.example.cyc.weatherinf.module.CityWeather;
 import com.example.cyc.weatherinf.retrofit.HttpMethods;
 import com.example.cyc.weatherinf.utils.CityIdSend;
-import com.example.cyc.weatherinf.view.MainActivity;
-import com.example.cyc.weatherinf.view.ShowWeather;
+import com.example.cyc.weatherinf.activity.MainActivity;
+import com.example.cyc.weatherinf.activity.ShowWeather;
 
 /**
  * Created by cyc on 2016/9/7.

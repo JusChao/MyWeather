@@ -1,4 +1,4 @@
-package com.example.cyc.weatherinf.view;
+package com.example.cyc.weatherinf.activity;
 
 import com.example.cyc.weatherinf.module.CityBean;
 

@@ -1,4 +1,4 @@
-package com.example.cyc.weatherinf.view;
+package com.example.cyc.weatherinf.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

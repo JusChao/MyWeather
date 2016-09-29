@@ -7,8 +7,8 @@ import com.example.cyc.weatherinf.module.CityBean;
 import com.example.cyc.weatherinf.module.CityWeather;
 import com.example.cyc.weatherinf.utils.PinYinComparator;
 import com.example.cyc.weatherinf.utils.Util;
-import com.example.cyc.weatherinf.view.GetCityList;
-import com.example.cyc.weatherinf.view.ShowWeather;
+import com.example.cyc.weatherinf.activity.GetCityList;
+import com.example.cyc.weatherinf.activity.ShowWeather;
 
 import java.io.File;
 import java.io.IOException;

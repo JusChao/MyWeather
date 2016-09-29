@@ -1,4 +1,4 @@
-package com.example.cyc.weatherinf.view;
+package com.example.cyc.weatherinf.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.cyc.weatherinf.R;
 import com.example.cyc.weatherinf.adapter.CityMangerAdapter;
+import com.example.cyc.weatherinf.view.CityMangerRecylcerView;
 
 /**
  * Created by cyc on 2016/9/23.
