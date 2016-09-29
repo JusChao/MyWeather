@@ -66,6 +66,8 @@ public class SelectCityActivity extends BaseCompatActivity implements GetCityLis
         });
     }
 
+
+
     private void editListener() {
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override

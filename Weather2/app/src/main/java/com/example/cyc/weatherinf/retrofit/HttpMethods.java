@@ -95,6 +95,7 @@ public class HttpMethods {
  */
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                //fuck***
 //                .client(builder.build())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
