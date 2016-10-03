@@ -33,7 +33,7 @@ public class WeatherFragment extends Fragment implements ShowWeather, CityIdSend
     private SharedPreferences sharedPreferences;
 
     public WeatherFragment() {
-        MainActivity.getWeather().setLintener(this);
+        MainActivity.getWeather().setListener(this);
     }
 
     @Nullable

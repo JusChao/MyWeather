@@ -159,7 +159,7 @@ public class MainActivity extends BaseCompatActivity implements NavigationView.O
 
     }
 
-    public void setLintener(CityIdSend cityIdSend) {
+    public void setListener(CityIdSend cityIdSend) {
         send = cityIdSend;
         send.sendId(cityId);
     }
