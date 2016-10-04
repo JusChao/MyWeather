@@ -19,6 +19,6 @@
     <com.example.cyc.weatherinf.view.CityMangerRecylcerView
         android:id="@+id/city_manger_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.example.cyc.weatherinf.view.CityMangerRecylcerView>
+        android:layout_height="wrap_content"></com.example.cyc.weatherinf.view.CityMangerRecylcerView>
 
 </LinearLayout>

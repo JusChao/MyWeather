@@ -5,7 +5,7 @@
     android:background="#fff"
     android:orientation="vertical">
 
-    <com.example.cyc.weatherinf.view.LinearLayoutIter
+    <LinearLayout
         android:id="@+id/item_manger_ll"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -57,6 +57,6 @@
 
         </RelativeLayout>
 
-    </com.example.cyc.weatherinf.view.LinearLayoutIter>
+    </LinearLayout>
 
 </LinearLayout>

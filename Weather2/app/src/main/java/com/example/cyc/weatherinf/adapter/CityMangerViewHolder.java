@@ -21,7 +21,7 @@ public class CityMangerViewHolder extends RecyclerView.ViewHolder {
 
     public CityMangerViewHolder(View itemView) {
         super(itemView);
-        relativeLayout = (RelativeLayout) itemView.findViewById(R.id.city_manger_rl);
+//        relativeLayout = (RelativeLayout) itemView.findViewById(R.id.city_manger_rl);
         textView = (TextView) itemView.findViewById(R.id.item_manger_txt);
 //        imageView = (ImageView) itemView.findViewById(R.id.item_manger_delete_img);
         mainCityView = (ImageView) itemView.findViewById(R.id.main_city_icon);
